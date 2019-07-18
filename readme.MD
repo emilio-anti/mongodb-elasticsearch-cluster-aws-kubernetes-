@@ -4,7 +4,7 @@ Automate bringing up of kubernetes cluster on ec2 and provide a way to deploy an
 
 ## Prerequisites
 **Install aws, kubectl and kops.
-Profile keys configured.**
+We will need AWS CLI to access AWS via CLI and have preconfigured he SecretAccessKey and the AccessKeyId.**
 
 # **How it works**
 You will see bellow in the "HOW TO USE IT" section how to use this repository. This is just an explanation of what it does.
