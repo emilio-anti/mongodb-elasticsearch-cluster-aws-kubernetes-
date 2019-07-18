@@ -1,6 +1,6 @@
 # **DESCRIPTION**
 
-Automate bringing up of kubernetes cluster on either ec2 and provide a way to deploy an Elasticsearch cluster and a mongodb cluster
+Automate bringing up of kubernetes cluster on ec2 and provide a way to deploy an Elasticsearch cluster and a mongodb cluster
 
 ## Prerequisites
 **Install aws, kubectl and kops.
