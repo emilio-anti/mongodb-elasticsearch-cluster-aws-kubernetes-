@@ -14,20 +14,25 @@ aws iam create-access-key --user-name $uiam
 
 echo "Please enter the name of the bucket for kops storage. Be very imaginative with the name of it, since S3 buckets are unique ;)"
 read s3bucket
-
+echo $s3bucket
 echo "Creating s3 bucket with versioning for the kops state..."
 aws s3api create-bucket --bucket $s3bucket --region us-east-1
 aws s3api put-bucket-versioning --bucket $s3bucket --versioning-configuration Status=Enabled
-KOPS_STATE_STORE=s3://$s3bucket
 
-echo "Please enter a cluster name. Don't forget to add at the end of the name .k8s.local"
-read KOPS_CLUSTER_NAME
+sleep 8s
 
+echo "Please enter a cluster name."
+read clustername
+clusterk8s="$clustername.k8s.local"
 echo "Creating cluster..."
-kops create cluster --node-count=2 --node-size=t2.xlarge --zones=us-east-1a
-sleep 10m
-kops update cluster --name $KOPS_CLUSTER_NAME --yes
-sleep 10m
+kops create cluster --node-count=2 --node-size=t2.xlarge --zones=us-east-1a --name $clusterk8s --state s3://$s3bucket
+
+sleep 8m
+
+kops update cluster --name $clusterk8s --state s3://$s3bucket --yes
+
+sleep 8m
+
 kops validate cluster
 
 echo "Deploying Elasticsearch Cluster"

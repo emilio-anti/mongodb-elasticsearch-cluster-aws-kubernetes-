@@ -68,9 +68,9 @@ In order to verify the DNS resolution for the MongoDB cluster use:
 
 **kubectl run my-shell --rm -i --tty --image ubuntu -- bash**
 
-Once inside do a sudo apt update and a sudo apt install dnsutils and run the following command:
+Once inside do an *apt update* and an *apt install dnsutils* and run the following command:
 
-**DiG 9.11.3-1ubuntu1.1-Ubuntu <<>> mongo.mongo +search +noall +answer**
+**dig mongo.mongo +search +noall +answerr**
 
 You'll get the dns for service and the stateful sets pod ips This can be tested by running a nslookup over these, from inside the cluster.
 
